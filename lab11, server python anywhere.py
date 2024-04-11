@@ -76,6 +76,23 @@ def div():
     else:
         return 'Error! Bad convert'
 
+@app.route('/mod')
+def mod():
+    fir = request.args.get('fir')
+    sec = request.args.get('sec')
+    td = request.args.get('td')
+    if (sec == '0'):
+        return 'Division by 0'
+
+    if (td == "int"):
+        fir, sec = to_int(fir, sec)
+    elif (td == "float"):
+        fir, sec = to_float(fir, sec)
+    else:
+        return 'Error! Bad convert'
+
+    return str(fir % sec)
+
 # From degree to radian
 def deg_to_rad(a):
     return a * pi / 180
