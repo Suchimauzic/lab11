@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello from Flask!'
+    return 'Для взаимодействия с сервером:<br>\'/act/?fir=/n/&sec=/n2/&td=/int/float/\' - add, sub, mul, div, mod, pow<br>\'/act/?fir=/n/&mode=/radian/degree/&td=/int/float/\' - sin, cos, tan, sqrt<br>(without \'/\')'
 
 def to_int(a, b):
     return [int(a), int(b)]
@@ -163,7 +163,7 @@ def sqrt():
     fir = request.args.get('fir')
     td = request.args.get('td')
 
-    if (int(fir) < 0):
+    if (float(fir) < 0):
         return 'Error! Root of negative number'
 
     if (td == 'int'):
